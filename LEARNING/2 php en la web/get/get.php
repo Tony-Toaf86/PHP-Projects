@@ -1,0 +1,7 @@
+<?php
+//uso del get 
+
+
+
+
+?>

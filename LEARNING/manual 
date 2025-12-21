@@ -1,0 +1,105 @@
+PHP y la web (muy importante)
+
+PHP vive en el servidor, aquí entiendes cómo piensa
+
+Aprende
+
+Servidor local (XAMPP, Laragon o LAMP)
+
+$_GET, $_POST, $_REQUEST
+
+Formularios
+
+Manejo de sesiones y cookies
+
+Subida de archivos
+
+Manejo de errores
+
+👉 Práctica
+
+Login simple
+
+Registro de usuarios
+
+Formulario con validaciones
+
+
+
+3️⃣ PHP + MySQL (el corazón del backend)
+
+Aquí ya haces cosas reales
+
+Aprende
+
+MySQL básico
+
+CRUD
+
+mysqli y PDO (muy importante)
+
+Consultas preparadas
+
+Relaciones entre tablas
+
+👉 Práctica
+
+Sistema de usuarios
+
+Inventario (esto encaja perfecto con lo que ya vienes haciendo)
+
+Sistema de ventas simple
+
+
+
+4️⃣ Programación orientada a objetos en PHP
+
+Aquí pasas de “programar” a programar bien
+
+Aprende
+
+Clases y objetos
+
+Constructores
+
+Encapsulación
+
+Herencia
+
+Polimorfismo
+
+Namespaces
+
+Autoloading
+
+👉 Práctica
+
+Refactorizar proyectos anteriores a POO
+
+
+
+5️⃣ Seguridad (obligatoria)
+
+Un PHP sin seguridad es una bomba
+
+Aprende
+
+Inyección SQL
+
+XSS
+
+CSRF
+
+Hash de contraseñas
+
+Validación y sanitización
+
+Manejo seguro de sesiones
+
+👉 Práctica
+
+Asegurar login
+
+Proteger formularios
+
+Roles de usuario
