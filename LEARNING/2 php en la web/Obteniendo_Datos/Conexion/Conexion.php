@@ -1,6 +1,10 @@
 <?php
+namespace App\Conexion;
 
-class conexion
+use PDO;
+use PDOException;
+
+class Conexion
 {
 
     public string $host = "localhost";

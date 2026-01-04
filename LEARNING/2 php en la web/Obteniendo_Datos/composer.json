@@ -1,0 +1,9 @@
+{
+    "autoload": {
+        "psr-4": {
+            "App\\Conexion\\": "Conexion",
+            "App\\Productos\\": "Productos",
+            "App\\Formulario\\": "Formulario"
+        }
+    }
+}
