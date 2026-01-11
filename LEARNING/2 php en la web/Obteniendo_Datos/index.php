@@ -76,6 +76,11 @@ if (isset($_POST['obtener'])) {
     $idProveedor = intval($_POST['idProveedor'] ?? 0);
     $fechaRegistro = $_POST['fechaRegistro'] ?? '';
 
+    if($idProducto <= 0 && $nombre === '' && $cantidad <= 0 ) {  //pendiente de encapsular mejor
+        echo "<p style='color:red;'>El ID del producto debe ser un número positivo mayor que cero.</p>";
+        exit;
+    }
+
     $inserto = $productoClass->insertProducto(
         $idProducto,
         $nombre,
@@ -95,8 +100,10 @@ if (isset($_POST['obtener'])) {
         echo "<p style='color:red;'>Error al insertar el producto</p>";
     }
 }else if(isset($_POST['limpiar'])) {
-    $id = $nombre = $cantidad = $precioCompra = $precioVenta = $descripcion = $stockMinimo = $idCategoria = $idProveedor = $fechaRegistro = "";
+    //lipiando inputs
+    $limpiando = $productoClass->limpiarInputs();
 }
+    
 
 ?>
 
@@ -300,7 +307,7 @@ if (isset($_POST['obtener'])) {
                 <button type="submit" name="insert" class="Btn-vender">INSERTAR PRODUCTO</button>
                 <button type="submit" name="delete" class="Btn-vender">ELIMINAR PRODUCTO</button>
 
-                <button type="reset" class="Btn-delete">LIMPIAR</button>
+                <button type="submit" name="limpiar" class="Btn-delete">LIMPIAR</button>
 
             </div>
 

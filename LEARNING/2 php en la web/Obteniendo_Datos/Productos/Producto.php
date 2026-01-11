@@ -117,6 +117,24 @@ class Producto
         return $stm->execute(['idProducto' => $idProducto]);
     }
 
+    //funcion para limpiar los inputs 
+    public function limpiarInputs()
+    {
+        $idProducto = $nombre = $cantidad = $precioCompra = $precioVenta = $descripcion = $stockMinimo = $idCategoria = $idProveedor = $fechaRegistro = "";
+        return [
+            'idProducto' => $idProducto,
+            'nombre' => $nombre,
+            'cantidad' => $cantidad,
+            'precioCompra' => $precioCompra,
+            'precioVenta' => $precioVenta,
+            'descripcion' => $descripcion,
+            'stockMinimo' => $stockMinimo,
+            'idCategoria' => $idCategoria,
+            'idProveedor' => $idProveedor,
+            'fechaRegistro' => $fechaRegistro
+        ];
+    }
+
 
 }
 
