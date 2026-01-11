@@ -1,15 +1,15 @@
-<?php
+    <?php
 require_once __DIR__ . '/vendor/autoload.php';
 
 use App\Productos\Producto;
 
-$id = $nombre = $cantidad = $precioCompra = $precioVenta = $descripcion = $stockMinimo = $idCategoria = $idProveedor = $fechaRegistro = "";
+$idProducto = $nombre = $cantidad = $precioCompra = $precioVenta = $descripcion = $stockMinimo = $idCategoria = $idProveedor = $fechaRegistro = "";
 $productoClass = new Producto();
 
 if (isset($_POST['obtener'])) {
-    $id = intval($_POST['idProducto']);
+    $idProducto = intval($_POST['idProducto']);
     
-    $resultado = $productoClass->buscarProducto($id);
+    $resultado = $productoClass->buscarProducto($idProducto);
 
     if ($resultado) {
         $nombre = $resultado['nombre'] ?? '';
@@ -54,6 +54,48 @@ if (isset($_POST['obtener'])) {
     } else {
         echo "<p style='color:red;'>Error al actualizar el producto</p>";
     }
+
+}else if (isset($_POST['delete'])) {
+    $id = intval($_POST['idProducto']);
+    $eliminando  = $productoClass->eliminarProducto($id);
+    if ($eliminando) {
+        echo "<p style='color:green;'>Producto eliminado correctamente</p>";
+    } else {
+        echo "<p style='color:red;'>Error al eliminar el producto</p>";
+    }
+
+}else if(isset($_POST['insert'])) {
+    $idProducto = intval($_POST['idProducto']);
+    $nombre = $_POST['nombre'] ?? '';
+    $cantidad = intval($_POST['cantidad'] ?? 0);
+    $precioCompra = floatval($_POST['precioCompra'] ?? 0);
+    $precioVenta = floatval($_POST['precioVenta'] ?? 0);    
+    $descripcion = $_POST['descripcion'] ?? '';
+    $stockMinimo = intval($_POST['stockMinimo'] ?? 0);
+    $idCategoria = intval($_POST['idCategoria'] ?? 0);
+    $idProveedor = intval($_POST['idProveedor'] ?? 0);
+    $fechaRegistro = $_POST['fechaRegistro'] ?? '';
+
+    $inserto = $productoClass->insertProducto(
+        $idProducto,
+        $nombre,
+        $cantidad,
+        $precioCompra,
+        $precioVenta,
+        $descripcion,
+        $stockMinimo,
+        $idCategoria,
+        $idProveedor,
+        $fechaRegistro
+    );
+
+    if ($inserto) {
+        echo "<p style='color:green;'>Producto insertado correctamente</p>";
+    } else {
+        echo "<p style='color:red;'>Error al insertar el producto</p>";
+    }
+}else if(isset($_POST['limpiar'])) {
+    $id = $nombre = $cantidad = $precioCompra = $precioVenta = $descripcion = $stockMinimo = $idCategoria = $idProveedor = $fechaRegistro = "";
 }
 
 ?>
@@ -198,7 +240,7 @@ if (isset($_POST['obtener'])) {
 
             <div class="caja">
                 <label for="idProducto">ID Producto</label>
-                <input type="text" name="idProducto" id="idProducto" value="<?= htmlspecialchars($id) ?>" />
+                <input type="text" name="idProducto" id="idProducto" value="<?= htmlspecialchars($idProducto) ?>" />
             </div>
 
             <div class="caja">
