@@ -1,0 +1,202 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Contenedor principal del menú */
+.menu {
+  background-color: rgba(209, 19, 219, 0.25);
+  padding: 10px;
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 8px;
+
+}
+
+/* Flex para alinear logo y enlaces */
+.menu-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Logo */
+.logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #000;
+}
+
+/* Toggle para móvil */
+#menu-toggle {
+  display: none;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Lista de enlaces */
+.menu-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Links normales */
+.menu-links li a {
+  text-decoration: none;
+  color: #000;
+  padding: 8px 12px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.menu-links li a:hover {
+  background-color: rgba(13, 202, 240, 0.5);
+  border-radius: 5px;
+  color: #fff;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+/* Dropdown menú */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  background-color: #fff;
+  min-width: 150px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 100;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 8px 12px;
+  color: #000;
+}
+
+.dropdown-menu li a:hover {
+  background-color: rgba(13, 202, 240, 0.5);
+  color: #fff;
+}
+
+/* Dropdown derecho (avatar) */
+.dropdown-menu.right {
+  left: auto;
+  right: 0;
+}
+
+/* Mostrar dropdown al hover en desktop */
+@media(min-width: 769px) {
+  .dropdown input {
+    display: none; /* checkbox no usado en desktop */
+  }
+  .dropdown > label {
+    display: none; /* label solo móvil */
+  }
+  .dropdown > a {
+    display: inline-block;
+    cursor: pointer;
+  }
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+}
+
+/* Buscador */
+.search form {
+  display: flex;
+  gap: 5px;
+}
+
+.search input {
+  padding: 5px 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search button {
+  padding: 5px 10px;
+  border: 1px solid #0dcaf0;
+  background-color: #0dcaf0;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Responsive móvil */
+@media(max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .menu-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  /* Mostrar menú al activar checkbox principal */
+  #menu-toggle:checked + .menu-icon + .menu-links {
+    display: flex;
+  }
+
+  /* Dropdown en móvil al clic */
+  .dropdown > a {
+    display: none; /* ocultamos links normales en móvil */
+  }
+  .dropdown label {
+    display: block;
+    cursor: pointer;
+    padding: 8px 12px;
+    background-color: rgba(13,202,240,0.25);
+    border-radius: 5px;
+  }
+  .dropdown input {
+    display: none; /* checkbox invisible */
+  }
+  .dropdown input:checked + label + .dropdown-menu {
+    display: block;
+  }
+
+  /* Dropdown menú en móvil */
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    padding-left: 10px;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: none; /* desactivamos hover en móvil */
+  }
+
+  /* Buscador ocupa todo ancho */
+  .search form {
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .search input {
+    flex: 1;
+  }
+}

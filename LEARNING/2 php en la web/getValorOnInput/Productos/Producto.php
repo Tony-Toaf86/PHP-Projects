@@ -135,7 +135,13 @@ class Producto
         ];
     }
 
-
+    public function listarProductos($nombretabla)
+    {
+        $sql = "SELECT * FROM $nombretabla";
+        $stm = $this->db->prepare($sql);
+        $stm->execute();
+        return $stm->fetchAll();
+    }
 }
 
 

@@ -1,5 +1,5 @@
 <?php 
-require "conexion.php"
+require "conexion.php";
 
 class DevuelvePaises extends Conexion{
 
