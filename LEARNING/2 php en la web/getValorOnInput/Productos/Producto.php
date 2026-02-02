@@ -22,7 +22,7 @@ class Producto
     }
     // FUNCIO PARA ACTUALIZAR DATOS
     public function updateProducto(
-        int $id,
+        int $idProducto,
         string $nombre,
         int $cantidad,
         float $precioCompra,
@@ -56,10 +56,11 @@ class Producto
             'idCategoria' => $idCategoria,
             'idProveedor' => $idProveedor,
             'fechaRegistro' => $fechaRegistro,
-            'idProducto' => $id
+            'idProducto' => $idProducto
         ]);
     }
-    public function inserProducto(
+    public function insertProducto(
+        int $idProducto,
         string $nombre,
         int $cantidad,
         float $precioCompra,
@@ -71,6 +72,7 @@ class Producto
         string $fechaRegistro
     ) {
         $sql = "INSERT INTO productos (
+                    idProducto,
                     nombre,
                     cantidad,
                     precioCompra,
@@ -81,6 +83,7 @@ class Producto
                     idProveedor,
                     fechaRegistro
                 ) VALUES (
+                    :idProducto,
                     :nombre,
                     :cantidad,
                     :precioCompra,
@@ -94,6 +97,7 @@ class Producto
 
         $stm = $this->db->prepare($sql);
         return $stm->execute([
+            'idProducto' => $idProducto,
             'nombre' => $nombre,
             'cantidad' => $cantidad,
             'precioCompra' => $precioCompra,
@@ -105,15 +109,39 @@ class Producto
             'fechaRegistro' => $fechaRegistro
         ]);
     }
-    
-    public function eliminarProducto(int $id)
+
+    public function eliminarProducto(int $idProducto)
     {
         $sql = "DELETE FROM productos WHERE idProducto = :idProducto";
         $stm = $this->db->prepare($sql);
-        return $stm->execute(['idProducto' => $id]);
+        return $stm->execute(['idProducto' => $idProducto]);
     }
 
+    //funcion para limpiar los inputs 
+    public function limpiarInputs()
+    {
+        $idProducto = $nombre = $cantidad = $precioCompra = $precioVenta = $descripcion = $stockMinimo = $idCategoria = $idProveedor = $fechaRegistro = "";
+        return [
+            'idProducto' => $idProducto,
+            'nombre' => $nombre,
+            'cantidad' => $cantidad,
+            'precioCompra' => $precioCompra,
+            'precioVenta' => $precioVenta,
+            'descripcion' => $descripcion,
+            'stockMinimo' => $stockMinimo,
+            'idCategoria' => $idCategoria,
+            'idProveedor' => $idProveedor,
+            'fechaRegistro' => $fechaRegistro
+        ];
+    }
 
+    public function listarProductos($nombretabla)
+    {
+        $sql = "SELECT * FROM $nombretabla";
+        $stm = $this->db->prepare($sql);
+        $stm->execute();
+        return $stm->fetchAll();
+    }
 }
 
 

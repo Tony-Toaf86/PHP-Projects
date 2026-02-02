@@ -19,11 +19,11 @@ $array_paises = $paises->get_paises();
 <body>
 
 	<?php 
-	foreach (array_paises as $elemento){
+	foreach ($array_paises as $elemento){
 
 		echo "<table><tr><td>"; 
-		echo $elemento['NOMBRE'] 
-		echo $elemento['CAPITAL']		
+		echo $elemento['NOMBRE']."</td><td>";
+		echo $elemento['CAPITAL']."</td><td>";
 		echo $elemento['PAISDEORIGEN']."</td><td></tr></table>";	
 
 		echo "<br>";

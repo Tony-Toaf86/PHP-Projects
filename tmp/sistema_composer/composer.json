@@ -1,0 +1,9 @@
+{
+    "autoload": {
+        "psr-4": {
+            "App\\Recursos\\": "Recursos/",
+            "App\\Pages\\Vender\\": "Pages/Vender/",
+            "App\\Pages\\Comprar\\": "Pages/Comprar/"
+        }
+    }
+}

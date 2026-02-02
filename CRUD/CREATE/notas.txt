@@ -1,0 +1,5 @@
+NOTAS 
+
+BASE DE DATOS: inventarrio      
+
+TABLA: product
